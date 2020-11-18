@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 import { postAdded } from './postsSlice';
 
 export const AddPostForm = () => {
@@ -16,13 +15,15 @@ export const AddPostForm = () => {
     }
     const onSavePostClicked = () => {
         if (title && content) {
-            dispatch(
-              postAdded({
-                id: nanoid(),
-                title,
-                content
-              })
-            );
+            dispatch(postAdded(title, content)); // slice 中添加了prepare payload logic
+            // slice 中未添加了prepare payload logic，需要组件自身处理
+            // dispatch(
+            //   postAdded({
+            //     id: nanoid(),
+            //     title,
+            //     content
+            //   })
+            // );
             setTitle('');
             setContent('');
         }
