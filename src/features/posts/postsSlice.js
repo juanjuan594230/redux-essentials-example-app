@@ -19,12 +19,13 @@ const postsSlice = createSlice({
           state.push(action.payload);
         },
         // dispatch action之后，准备payload，react component不需要关注payload准备的逻辑
-        prepare(content, title) {
+        prepare(content, title, userId) {
           return {
             payload: {
               id: nanoid(),
               title,
-              content
+              content,
+              user: userId
             }
           }
         }

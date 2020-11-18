@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import postsReducer from '../features/posts/postsSlice';
+import usersReducer from '../features/users/usersSlice';
 
 export default configureStore({
   reducer: {
@@ -8,6 +9,7 @@ export default configureStore({
     // state.posts
     // actions are dispatched, postsReducer function will be called, then state.posts will be updated
     // so that the postsReducer is being passed as a reducer field named posts
-    posts: postsReducer
+    posts: postsReducer,
+    users: usersReducer
   },
 })
